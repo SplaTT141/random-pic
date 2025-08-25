@@ -16,7 +16,7 @@ btnDOM.addEventListener('click', () => {
         errorDOM.textContent = 'Number is too large';
     } else {
         const imagesDOM = document.querySelector('.images');
-        imagesDOM.insertAdjacentHTML('afterbegin', `<img src="test.jpg" alt='pic' />`)
+        imagesDOM.innerHTML = (`<img src="test.jpg" alt='pic' />`).repeat(inputDOM.value);
     }
 
     setTimeout(() => {

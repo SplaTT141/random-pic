@@ -17,7 +17,6 @@ btnDOM.addEventListener('click', () => {
     //     errorDOM.classList.add('active');
     //     errorDOM.textContent = 'Number is too large';
     // } else {
-    //     const imagesDOM = document.querySelector('.images');
     //     imagesDOM.innerHTML = (`<img src="test.jpg" alt='pic' />`).repeat(inputDOM.value);
     // }
 
@@ -30,9 +29,10 @@ btnDOM.addEventListener('click', () => {
 fetch('https://api.unsplash.com/photos', {
     headers: {
         Authorization: `Client-ID ${accessKey}`
-    },
+    }
 })
     .then(res => res.json())
     .then(data => {
         console.log(data);
     })
+    .catch(console.error);

@@ -1,4 +1,4 @@
-import { accessKey } from "./accessKey";
+import { accessKey } from "./accessKey.js";
 
 const inputDOM = document.querySelector('input');
 const btnDOM = document.querySelector('button');

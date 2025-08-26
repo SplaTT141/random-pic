@@ -7,19 +7,18 @@ const btnDOM = document.querySelector('button');
 btnDOM.addEventListener('click', () => {
     const errorDOM = document.querySelector('.error');
 
-    if (inputDOM.value === '') {
+    if (inputDOM.value === '' || isNaN(+inputDOM.value)) {
         errorDOM.classList.add('active');
         errorDOM.textContent = 'Enter a number';
-    } else if (inputDOM.value <= 0) {
+    } else if (+inputDOM.value <= 0) {
         errorDOM.classList.add('active');
         errorDOM.textContent = 'Number is too low';
-    } else if (inputDOM.value > 10) {
+    } else if (+inputDOM.value > 10) {
         errorDOM.classList.add('active');
         errorDOM.textContent = 'Number is too large';
     } else {
         const imagesDOM = document.querySelector('.images');
         const randomPage = Math.floor(Math.random() * 1000) + 1;
-        let imgUrl = [];
 
         fetch(`https://api.unsplash.com/photos?per_page=${inputDOM.value}&page=${randomPage}`, {
             headers: {
@@ -28,12 +27,12 @@ btnDOM.addEventListener('click', () => {
         })
             .then(res => res.json())
             .then(data => {
-                data.forEach(e => {
-                    imgUrl.push(e.urls.regular);
-                })
-                imagesDOM.innerHTML = imgUrl.map(url => `<img src="${url}" alt="picture"/>`).join('');
+                imagesDOM.innerHTML = data.map(url => `<img src="${url.urls.regular}" alt="picture"/>`).join('');
             })
-            .catch(console.error);
+            .catch(err => {
+                console.error(err)
+                imagesDOM.textContent = 'No images found, try again.'
+            });
     }
 
     setTimeout(() => {

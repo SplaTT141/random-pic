@@ -19,7 +19,7 @@ btnDOM.addEventListener('click', () => {
     } else {
         const imagesDOM = document.querySelector('.images');
         const randomPage = Math.floor(Math.random() * 1000) + 1;
-        let imgUrl = '';
+        let imgUrl = [];
 
         fetch(`https://api.unsplash.com/photos?per_page=${inputDOM.value}&page=${randomPage}`, {
             headers: {
@@ -29,10 +29,9 @@ btnDOM.addEventListener('click', () => {
             .then(res => res.json())
             .then(data => {
                 data.forEach(e => {
-                    imgUrl = e.urls.regular;
-                    console.log(typeof imgUrl);
+                    imgUrl.push(e.urls.regular);
                 })
-                imagesDOM.innerHTML = `<img src="${imgUrl}" alt="picture"/>`.repeat(inputDOM.value);
+                imagesDOM.innerHTML = imgUrl.map(url => `<img src="${url}" alt="picture"/>`).join('');
             })
             .catch(console.error);
     }
@@ -42,6 +41,3 @@ btnDOM.addEventListener('click', () => {
     }, 3000)
 
 })
-
-
-// ikisti url i viena img elementa

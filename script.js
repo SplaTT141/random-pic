@@ -5,34 +5,43 @@ const btnDOM = document.querySelector('button');
 
 
 btnDOM.addEventListener('click', () => {
-    // const errorDOM = document.querySelector('.error');
+    const errorDOM = document.querySelector('.error');
 
-    // if (inputDOM.value === '') {
-    //     errorDOM.classList.add('active');
-    //     errorDOM.textContent = 'Enter a number';
-    // } else if (inputDOM.value <= 0) {
-    //     errorDOM.classList.add('active');
-    //     errorDOM.textContent = 'Number is too low';
-    // } else if (inputDOM.value > 10) {
-    //     errorDOM.classList.add('active');
-    //     errorDOM.textContent = 'Number is too large';
-    // } else {
-    //     imagesDOM.innerHTML = (`<img src="test.jpg" alt='pic' />`).repeat(inputDOM.value);
-    // }
+    if (inputDOM.value === '') {
+        errorDOM.classList.add('active');
+        errorDOM.textContent = 'Enter a number';
+    } else if (inputDOM.value <= 0) {
+        errorDOM.classList.add('active');
+        errorDOM.textContent = 'Number is too low';
+    } else if (inputDOM.value > 10) {
+        errorDOM.classList.add('active');
+        errorDOM.textContent = 'Number is too large';
+    } else {
+        const imagesDOM = document.querySelector('.images');
+        const randomPage = Math.floor(Math.random() * 1000) + 1;
+        let imgUrl = '';
 
-    // setTimeout(() => {
-    //     errorDOM.classList.remove('active');
-    // }, 3000)
-
-})
-
-fetch('https://api.unsplash.com/photos', {
-    headers: {
-        Authorization: `Client-ID ${accessKey}`
+        fetch(`https://api.unsplash.com/photos?per_page=${inputDOM.value}&page=${randomPage}`, {
+            headers: {
+                Authorization: `Client-ID ${accessKey}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                data.forEach(e => {
+                    imgUrl = e.urls.regular;
+                    console.log(typeof imgUrl);
+                })
+                imagesDOM.innerHTML = `<img src="${imgUrl}" alt="picture"/>`.repeat(inputDOM.value);
+            })
+            .catch(console.error);
     }
+
+    setTimeout(() => {
+        errorDOM.classList.remove('active');
+    }, 3000)
+
 })
-    .then(res => res.json())
-    .then(data => {
-        console.log(data);
-    })
-    .catch(console.error);
+
+
+// ikisti url i viena img elementa

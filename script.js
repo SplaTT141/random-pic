@@ -19,7 +19,7 @@ btnDOM.addEventListener('click', () => {
 
         fetch(`https://api.unsplash.com/photos?per_page=${inputDOM.value}&page=${randomPage}`, {
             headers: {
-                Authorization: `Client-ID RZEIOVfPhS7vMLkFdd2TSKGFBS4o9_FmcV1Nje3FSjw`
+                Authorization: `Client-ID gnJGv01qFiy98MoKeGWvxJfIHd_vcCZhl6Xk9g6pkxA`
             }
         })
             .then(res => res.json())

@@ -1,16 +1,15 @@
-# 🖼️ Image Search App
+# 🎰 Random Image Fetcher
 
 ## 🌟 About
 
-A simple JavaScript application that allows users to search for images using the Unsplash API, display results with pagination, and view images in a zoomed mode.
+A simple JavaScript project that fetches random images from the Unsplash API based on a user-defined number. The app validates user input, displays helpful error messages, and dynamically renders images on the page.
 
 ## 🚀 Features
 
-- 🕵 Search images by keyword
-- 🔍 Click-to-zoom image preview
-- 📇 Pagination with Show more button
-- 📝 Image description
-- ⚠️ Error handling when no images are found
+- 🕵 Fetches random images from Unsplash
+- 🔍 User input validation with clear error messages
+- 📇 Limits the number of images (1–10)
+- 📝 Clean and minimal DOM manipulation using vanilla JavaScript
 
 ## 🛠️ Technologies Used
 
@@ -21,16 +20,14 @@ A simple JavaScript application that allows users to search for images using the
 
 ## ▶️ Live Demo
 
-👉 **[Open the project](https://splatt141.github.io/picture-search/)**
+👉 **[Open the project](https://splatt141.github.io/random-pic/)**
 
 ## 📖 How to use
 
 ```
-1. Click 👉 https://splatt141.github.io/picture-search/
-2. Enter a search keyword
-3. Click Search
-4. Click Show more to load additional images
-5. Click on an image to zoom in
+1. Enter a number between 1 and 10.
+2. Click "Get Photos"
+3. The selected number of random images will appear below.
 ```
 
 ## ✍️ Author

@@ -3,7 +3,6 @@ import { accessKey } from "./accessKey.js";
 const inputDOM = document.querySelector('input');
 const btnDOM = document.querySelector('button');
 
-
 btnDOM.addEventListener('click', () => {
     const errorDOM = document.querySelector('.error');
 
